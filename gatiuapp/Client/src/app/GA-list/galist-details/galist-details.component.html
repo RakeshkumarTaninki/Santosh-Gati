@@ -1,0 +1,254 @@
+<div class="container"  *ngIf="authenticated">
+  <div class="main-section">
+    <div class="row" *ngIf="!applyAuth || accessArr?.indexOf('user_profile')>-1">
+      <div class="col-lg-3">
+        <div class="ga-list ">
+          <div class="list-container">
+            <div class="row row-heading">
+              Group - A
+            </div>
+            <div class="row subrow-heading">
+              Active Gati Associates ({{listdata?.length}})
+            </div>
+            <hr>
+            <div class="row search-input">
+              <input class="inputfield" type="text" placeholder=" Search" name="search"
+              [(ngModel)]="SearchText" (keyup.enter)="searchList(SearchText)">
+            </div>
+            <div class="header" style="padding-top: 25px;">
+              <span>GA Name</span>
+              <span>GA Code</span>
+            </div>
+            <div class="row list-content">
+                      
+              <div class="tableSection table-responsive " >
+                  <div class="scrollbar scrollbar-primary" 
+                  infinite-scroll
+                  debounce
+                  [infiniteScrollDistance]="5"
+                  [infiniteScrollThrottle]="100"
+                  [scrollWindow]="false"
+                  (scrolled)="onScroll()">
+               <table id="myTable" class="table table-borderless">
+                  <tbody>
+
+                        <tr *ngFor="let list of listdata ;let i= index"    
+                        >
+                          
+                              <td style="width:68%;"
+                              [ngClass]="{hlit2:list.gaCode==agentCode, hlit:list.gaCode!=agentCode}"
+                              >
+                                <a (click)="getDetails(list.gaCode,list.gaName)">{{list.gaName}}</a>
+                              </td>
+
+                              <td 
+                              [ngClass]="{hlit2:list.gaCode==agentCode, hlit:list.gaCode!=agentCode}"
+                              class="ga_code" style="width:30%;"> {{list.gaCode}}</td> 
+                      </tr>
+                      </tbody>                      
+                    </table> 
+                    
+              </div>
+              <div *ngIf="isloading">
+                <i class="fa fa-spinner fa-spin spinner" style="font-size:24px"></i>
+              </div>
+              </div>
+             </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="col-lg-9 secondHalf">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="pagedate">Updated on {{ today | date : "dd MMMM,y hh:mm:ssa" }}</p>
+            </div>
+        </div>
+
+        <div class="row secondRow">
+          <div class="col-lg-3">
+            <div class="ga-details">
+              <div class="grid">
+                <div class="row name"> {{agentName}} </div>
+                <div class="row chat-row">
+                  <div class="col-lg-9 gaDetails">
+                  {{agentCode}}
+                  </div>
+
+                  <div class="col-lg-3 chatImgHolder">
+                    <img *ngIf="accessArr?.indexOf('chat')!=-1" class="chat" src="..\..\assets\Images\Group 642.svg"
+                    (click)="openChat($event)"
+                    >
+                    <img (click)="showHideActionsMenu()" class="dots" src="..\..\assets\Images\dots.svg" alt="">
+
+                  </div>
+
+                    <ul class="actionsMenu" [hidden]="!showCtxMenu">
+                      <li *ngIf="accessArr?.indexOf('password_reset')!=-1" (click)="resetPassword()">Reset Password</li>
+                      <li *ngIf="accessArr?.indexOf('user_profile')!=-1" (click)="enableDisableUser()">
+                        {{isEnabled ? 'Disable' : 'Enable' }}
+                      </li>
+                    </ul>
+
+                </div>
+                <div class="row code"> 
+                  <span>OU Code : {{ouCode}} </span>                
+                </div>
+                <div class="row mob"> Mob.: {{mb}} </div>
+                <div class="row state"> {{isEnabled ? 'Active' : 'Disabled' }}</div>
+    
+                <div class=" row status-circle-1">
+                    <circle-progress
+                    [percent]="DocketPercentage"
+                    [radius]="70"
+                    [outerStrokeWidth]="9"
+                    [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#0096B1'"
+                    [innerStrokeColor]="'#e7e8ea'"
+                    [animation]="true"
+                    [animationDuration]="300"
+                    [titleColor]="'#A9A9A9'"
+                    [subtitleColor]="'#0096B1'"
+                    [subtitleFontSize]='55'
+                    [titleFontSize]='20'
+                    [title]="Title"
+                    [subtitle]="totalDockets"
+                  
+        
+                  ></circle-progress>
+    
+                </div>
+                <div id ="circle" class=" row status-circle-2">
+                    <circle-progress
+                    [percent]="CODpercentage"
+                    [radius]="70"
+                    [outerStrokeWidth]="9"
+                    [innerStrokeWidth]="8"
+                    [outerStrokeColor]="'#febc01'"
+                    [innerStrokeColor]="'#e7e8ea'"
+                    [animation]="true"
+                    [animationDuration]="300"
+                    [titleColor]="'#A9A9A9'"
+                    [subtitleColor]="'#febc01'"
+                    [subtitleFontSize]='30'
+                    [titleFontSize]='18'
+                    [title]="Titleheading"
+                    [subtitle]="totalCOD"
+                  
+                  ></circle-progress>
+    
+                </div>
+    
+              <div class="statusData row ">
+                <div class="dataTitle col-lg-6 status-name">Delivered</div>
+                <div class="value col-lg-6 status-no">{{Delivered}}</div>
+              </div>
+              
+              <!-- <hr> -->
+              
+              <div class="statusData row">
+                  <div class="dataTitle col-lg-6 status-name">Undelivered</div>
+                  <div class="value col-lg-6 status-no">{{Undelivered}}</div>
+              </div>
+
+              <!-- <hr class="hr2"> -->
+                
+              <div class="statusData row">
+                <div class="dataTitle col-lg-6 status-name">Attempted</div>
+                <div class="value col-lg-6 status-no">{{Attempted}}</div>
+              </div>
+              
+              <!-- <hr> -->
+
+              <div class="statusData row">
+                <div class="dataTitle col-lg-6 status-name">Not Attempted</div>
+                <div class="value col-lg-6 status-no">{{NotAttempted}}</div>
+              </div>
+
+              <!-- <hr class="hr2"> -->
+
+              <div class="statusData row">
+                <div class="dataTitle col-lg-6 status-name">Pending POD</div>
+                <div class="value col-lg-6 status-no">{{POD}}</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+          <div class="col-lg-9">          
+            <!-- <div class="row mapRow">
+              <div class="ga-map">
+                <div id="map">
+                  <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                  </agm-map>
+                </div>
+              </div>
+            </div> -->
+    
+    
+            <div class="row deviceInfoRow">
+              <div class="col-lg-12">
+                
+                <div class="deviceInfo">
+
+                  <div class="devinceInfoTitle">
+                    Device Information
+                  </div>
+                  
+                  <div  class="row deviceInfoContent">
+                    <div class="col-lg-3"><b>IEMI: </b> <span class="devinceInfoTitleSubHeadings">{{iEMI}}</span></div>
+                    <div class="col-lg-3"><b>Mobile OS: </b> <span class="devinceInfoTitleSubHeadings">{{mobileOS}}</span></div>
+                    <div class="col-lg-3"><b>App Version Installed: </b><span class="devinceInfoTitleSubHeadings">{{appVersion}}</span></div>
+                    <div class="col-lg-3"><b>Mobile Model: </b><span class="devinceInfoTitleSubHeadings">{{mobileModel}}</span></div>
+                  </div>
+                  
+                </div>
+              
+              </div> <!--col-lg-12 .heading-->
+            
+            </div> <!--row-->
+    
+          </div> <!--col-lg-9-->
+          
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+  <div class="chat-popup" id="ngChatContainer">
+    <ng-chat 
+      #chatInstance
+
+      *ngIf="fbLoggedInUserId"
+      [adapter]="adapter" 
+      [userId]="fbLoggedInUserId" 
+      
+      [historyEnabled]="true" 
+      [historyPageSize]="4" 
+      [hideFriendsList]="false"
+
+      [title]="'Chats'"
+      [isCollapsed]="true"
+      [windowState]="false"
+      >
+    </ng-chat>
+  </div>
+
+</div>

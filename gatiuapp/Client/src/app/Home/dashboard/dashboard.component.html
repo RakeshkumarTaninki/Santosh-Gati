@@ -1,0 +1,181 @@
+<div class="container "  *ngIf="authenticated">
+    <div class="mainsection ">
+      <div class="row headingRow">
+        <div class="col-lg-3 pageHeading"> GROUP- A </div>
+        <div class="col-lg-9">  <p class="pagedate">Updated on {{ today | date : "dd MMMM,y hh:mm:ssa" }}</p> </div>
+       </div>
+       <div class="row row-container"> 
+         <div class="col-lg-8 table-container">
+         <div class="row white-container">
+       <div class="col-lg-6" > 
+          <p>Active Gati Associates ({{count}})</p>
+        </div>
+          <div class="col-lg-6 ">
+              <img src="/assets/Images/search_icon.png" class="searchImg"
+              (click)="searchList(SearchText)"
+              >
+              <input class="inputfield" type="text" placeholder=" Search for..." name="search" 
+              [(ngModel)]="SearchText" (keyup.enter)="searchList(SearchText)"
+              >
+          </div>
+        </div>
+        <hr>
+        
+        <div class="tableSection table-responsive">
+            <div class="scrollbar scrollbar-primary"
+                  infinite-scroll
+                  debounce
+                  [infiniteScrollDistance]="0.1"
+                  [infiniteScrollThrottle]="700"
+                  [scrollWindow]="false"
+                  [infiniteScrollContainer]
+                  (scrolled)="onScroll($event)">
+                <div class="force-overflow"></div>
+          <table id="myTable" class="gaListTable table table-borderless table-hover">
+            <thead>
+              <tr>
+                <th style="width:100px;">GA Name</th>
+                <th>GA Code</th>
+                <th>Dockets</th>
+                <th>Attempted</th>
+                <th>Delivered</th>
+                <th>Undelivered</th> 
+                <th *ngIf="accessArr?.indexOf('geo_fence')!=-1">Geofence</th> 
+                <th *ngIf="accessArr?.indexOf('user_profile')!=-1">Action</th> 
+                <th></th>
+              </tr>
+            </thead>
+            <tbody  >
+             
+              <tr  *ngFor="let list of listResult;let i= index" >
+                <td style="color:#01B6FE;">
+                  <a style="text-decoration:none;cursor: pointer;" 
+                  (click)="getAgentCode(list.gaCode,list.gaName)"> {{list.gaName}}</a>
+                </td>
+
+                <td>{{list.gaCode}}</td>
+                <td>{{list.totalDockets}}</td>
+                <td>{{list.attempted}}</td>
+                <td>{{list.delivered}}</td>
+                <td>{{list.unDelivered}}</td>
+
+                <td *ngIf="accessArr?.indexOf('geo_fence')!=-1">                   
+                  <img class="geofence" src="..\..\assets\Images\Group 7.svg" (click)="showGeoFence($event, list.gaCode)">
+                </td>
+                
+                <td  *ngIf="accessArr?.indexOf('user_profile')!=-1">
+                  <button                     
+                    class="themeButton" 
+                    [ngClass]="{enable:list.isEnabled==0, disable:list.isEnabled==2 }"
+                    (click)="enableDisableUser($event, list.gaCode, list.isEnabled)">
+                    
+                      {{list.isEnabled ? 'Disable' : 'Enable' }}
+                  
+                  </button>
+                </td>
+                
+                <td class="chat-notify">
+                  
+                  <img *ngIf="accessArr?.indexOf('chat')!=-1" class="geofence" src="..\..\assets\Images\Group 642.svg"  (click)="openChat($event, list.gaCode)">
+                  
+                  <div class="circle" *ngIf="messageCount">{{messageCount}}</div></td>
+              </tr>
+                 
+            </tbody>
+          </table>
+        </div>  
+        </div>
+         <div *ngIf="isloading">
+          <i class="fa fa-spinner fa-spin spinner" style="font-size:24px"></i>
+        </div> 
+      <!-- </cdk-virtual-scroll-viewport> -->
+
+      </div>
+
+      <div class="col-lg-3 ">
+      <div class="row ">
+        <div class="col status-container">
+          <div class="row status-heading">
+            <!-- <div class="col status-heading"> -->
+                TODAY'S STATUS
+            <!-- </div> -->
+          </div>
+          <hr>
+          <div class="row ">
+          <div class="col status-bar" >
+            <circle-progress
+            [percent]="statusbar"
+            [radius]="60"
+            [outerStrokeWidth]="9"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#0096B1'"
+            [innerStrokeColor]="'#e7e8ea'"
+            [animation]="true"
+            [animationDuration]="300"
+            [titleColor]="'#A9A9A9'"
+            [subtitleColor]="'#0096B1'"
+            [subtitleFontSize]='30'
+            [titleFontSize]='15'
+            [title]="Title"
+            [subtitle]="subtitle"
+
+          ></circle-progress>
+        </div>
+        <div class="col ">
+            <ul  class ="list" >
+                <li>Delivered</li>
+                <li style="color:#0096B1; font-size: 19px; font-weight: bold;margin-bottom: 4px;margin-top: -4px">{{Delivered}}</li>
+                <li>Undelivered</li>
+                <li  style="color:#D92B27; font-size: 19px;font-weight: bold;margin-bottom: 4px;margin-top: -4px">{{Undelivered}}</li>
+                <li>Attempted</li>
+                <li  style="color:#F1AD1E; font-size:19px;font-weight: bold;margin-bottom: 4px;margin-top: -4px">{{Attempted}}</li>
+                <li>Not Attempted</li>
+                <li  style="color:#2E296F; font-size: 19px;;font-weight: bold;margin-top: -4px">{{NotAttempted}}</li>
+              </ul> 
+        </div>
+      </div>
+          <!-- "titleFontSize": "13",
+          "subtitleFontSize": "31", -->
+        </div>
+
+      </div>
+      <!-- <div class="row">
+          <div class="col map-container">
+            <agm-map [latitude]="lat" [longitude]="lng">
+              <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+            </agm-map>
+
+          </div>
+        </div> -->
+
+      </div>
+       </div>
+
+
+    </div>
+ 
+  <div class="chat-popup" id="myForm">
+    <ng-chat 
+      #chatInstance
+
+      *ngIf="fbLoggedInUserId"
+      [adapter]="adapter" 
+      [userId]="fbLoggedInUserId" 
+      
+      [historyEnabled]="true" 
+      [historyPageSize]="4" 
+      [hideFriendsList]="false"
+
+      [title]="'Chats'"
+      [isCollapsed]="true"
+      
+      (onUserChatOpened)="chatOpened($event)"
+      (onUserChatClosed)="chatClosed($event)"
+      (onUserClicked)="participantClicked($event)"
+      (onMessagesSeen)="messageSeen($event)">
+    </ng-chat>
+  </div>
+  
+</div>
+
+

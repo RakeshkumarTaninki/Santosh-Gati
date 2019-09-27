@@ -1,0 +1,124 @@
+.whiteSection{
+    height: 80px;
+      background-color: #FFFFFF;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+
+    
+
+  .mainHeading{
+      font-size: 18px;
+      color: #4C84FF;
+      font-weight: bold;
+     padding-left: 3%;
+     padding-top: 2%;
+  }
+   .gati-logo{
+    margin-top: -15px;
+   }
+   .vl {
+  
+    margin-top: 22px;
+    border-left: 1px solid #d7d9da;
+    height: 45px;;
+
+}
+   .links-bar{
+    float: right;
+    // margin-right: 7%;
+    margin-top: 23px;
+
+      .themeButton{
+    background-color: #0096B1;
+    font-size: 13px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    height: 33px;
+    margin-top: -11px;
+    margin-left: 26px;
+    margin-right: 27px;
+    border-radius: 4px;
+    padding-right: 9px;
+      
+        .gati-brdcast{
+            height: 18px;
+            margin-top: 2px;
+            margin-right: 5px;
+        }
+        
+    }
+    .vl2 {
+  
+        margin-top: -1px;
+        margin-bottom: 2px;
+        border-left: 1px solid #d7d9da;
+        height: 31px;
+        margin-left: -12px;
+    
+    }
+    .horizontal{
+        padding:0 20px 0 0;
+    .dashboard{
+        color:black;
+        text-decoration: none;
+       
+    }
+    hr{
+        margin-top: 0rem !important;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 2px solid #0096B1;;
+    }
+} 
+  .notify{
+    .bell{
+        width: 19px;
+        margin-top: 3px;
+    }
+   
+   
+}
+.circle{
+    height: 19px;
+    width: 19px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #FF2670;
+    margin-left: -9px;
+    color: white;
+    font-size: 10px;
+    font-weight: normal;
+    /* padding: 5px; */
+    /* padding-left: 1px; */
+    margin-top: -1px;
+    position: absolute;
+    text-align: center;
+    padding-top: 2px;
+}
+    .adminName{
+        margin-left: 26px;
+        margin-right: 27px; 
+        text-transform: capitalize;
+    }
+    .dots{
+        width:7px; 
+        cursor: pointer;
+        .menu-list{
+            float:left;
+        }
+    }
+    
+   }
+
+   }
+ 
+
+
+

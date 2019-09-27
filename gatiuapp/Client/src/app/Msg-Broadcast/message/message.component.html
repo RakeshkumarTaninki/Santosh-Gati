@@ -1,0 +1,171 @@
+<div class="container "  *ngIf="authenticated">
+  <div class="mainsection ">
+    <div class="whitebox">
+
+      <div class="row">
+        <div class=" col message-Heading">
+          Broadcast Message         
+        </div>
+      </div>
+      <hr>      
+      
+      <!--Total form controls = 8-->
+      <form [formGroup]="messageBroadcastForm" class="formcontainer">
+        <div class="row drop-dwn-row" >
+          <div class="col-lg-2 sendAll">            
+            
+               <mat-checkbox 
+               (change)="sendAllHandler($event)"
+               color="primary" labelPosition="before" formControlName="sendAll">Send All</mat-checkbox>
+              
+                <mat-label class="or">or</mat-label>
+            
+          </div>
+        
+          <div class="col-lg-2">
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Select Zone</mat-label>
+
+              <mat-select 
+                 
+                formControlName="zone"
+                multiple 
+                (selectionChange)="onFilterChange($event, 'zone')"
+                >
+                <mat-option *ngFor="let zone of zones" [value]="zone">{{zone}}</mat-option>
+              </mat-select>
+
+            </mat-form-field>
+
+          </div> <!--Zone Select-->
+
+          <div class="col-lg-2">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Select EDC</mat-label>
+  
+                <mat-select 
+                  formControlName="edc"
+                  multiple 
+                  (selectionChange)="onFilterChange($event, 'edc')"
+                  >              
+                  <mat-option *ngFor="let edc of edcs" [value]="edc">{{edc}}</mat-option>
+                </mat-select>
+  
+            </mat-form-field>
+
+          </div> <!--EDC Select-->
+
+
+          <div class="col-lg-2">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Select GDW</mat-label>
+
+              <mat-select 
+                formControlName="gdw"
+                multiple 
+                (selectionChange)="onFilterChange($event, 'gdw')"
+                >              
+                <mat-option *ngFor="let gdw of gdws" [value]="gdw">{{gdw}}</mat-option>
+              </mat-select>
+  
+            </mat-form-field>
+            
+          </div> <!--GDW Select-->
+
+          <div class="col-lg-2">
+
+            <mat-form-field appearance="outline">
+              <mat-label>Select OU Code</mat-label>
+
+              <mat-select 
+                formControlName="ouCode"
+                multiple 
+                (selectionChange)="onFilterChange($event, 'ouCode')"
+               >              
+                <mat-option *ngFor="let ouCode of ouCodes" [value]="ouCode">{{ouCode}}</mat-option>
+              </mat-select>
+  
+            </mat-form-field>
+
+          </div> <!--OuCode Select-->
+
+          <div class="col-lg-2 totalRecipient">
+            <span>
+              Total Recepients:<b> {{totalRecipient}}</b>
+            </span>&nbsp;
+
+          </div> 
+
+        </div> 
+      
+        <h1 class="title">Message Title</h1>
+        <div class="row titlemsg">
+          <textarea 
+
+            formControlName="title"
+            class="form-control " rows="1"></textarea>
+        </div>
+
+        <h1 class="msg-heading">Message</h1>
+        <div class="row textmsg">
+          <textarea 
+            
+            formControlName="message"
+            class="form-control " rows="10"></textarea>
+        </div>
+        
+        <div class="row thumbSec">
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 thumbnailInp">
+            <h1 class="msg-heading">Thumbnail Image url</h1>
+            <input type="text"
+            class="form-control"
+            (change)="thumbnailUrlChange($event)"
+            formControlName="thumbnail"
+            >
+          </div>
+          
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 thumbnailImg">
+            <div class="thumbImgContainer">
+              <img 
+              (error)="thumbnailErrorHandler($event)"
+              alt="Preview Image" src="{{thumbnailUrl}}"  >
+            </div>          
+          </div>
+
+        </div>
+        
+        <div class="row btn-row">
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col bottom">
+            <button 
+              
+              class="cancelButton" 
+              [routerLink]="['/gati','dashboard']">Cancel</button>
+          </div>
+          <div class="col saveButtonContainer">
+              <button 
+                class="saveButton"
+                role="button" 
+                submit 
+                name="submit"
+                [disabled]="!messageBroadcastForm.valid || !checkFormValidation()"
+                (click)="sendMessage()"
+              >Send</button>
+              <br>
+          </div>
+        </div>
+      </form>
+        
+    </div>
+  </div>
+</div>
+
+<div>
+  
+</div>

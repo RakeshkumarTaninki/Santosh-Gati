@@ -1,0 +1,478 @@
+
+
+<div class="row">
+    
+    <div class="col-sm-2 animated fadeIn">
+      <div class="card card-block tip-card">
+        <div class="tip-msg">
+          <h3>POD Approval</h3>
+          <span></span>
+        </div>
+        <button class="tip-ico tip-ico-primary" (click)="showModalpod()">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2 animated fadeIn">
+      <div class="card card-block tip-card">
+        <div class="tip-msg">
+          <h3>Runsheet Upload</h3>
+          <span></span>
+        </div>
+        <button class="tip-ico tip-ico-primary" data-toggle="modal" (click)="showrunsheet()">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2 animated fadeIn">
+      <div class="card card-block tip-card">
+        <div class="tip-msg">
+          <h3>SDC Upload</h3>
+          <span></span>
+        </div>
+        <button class="tip-ico tip-ico-info" data-toggle="modal" (click)="showModalSDC()">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2 animated fadeIn">
+      <div class="card card-block tip-card">
+        <div class="tip-msg">
+          <h3>BAD POD Upload</h3>
+          <span></span>
+        </div>
+        <button class="tip-ico tip-ico-success" (click)="showModalbad()">
+            <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2 animated fadeIn">
+        <div class="card card-block tip-card">
+          <div class="tip-msg">
+            <h3>Payment Details</h3>
+            <span></span>
+          </div>
+          <button class="tip-ico tip-ico-default">
+              <i class="fa fa-money" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+</div>  
+
+     
+      
+         
+            <div class="row">
+                    <div class="col-sm-2">
+                            <div class="form-group">
+                                <label for="groupdata">Transaction Types</label>
+                                <select class="form-control" ngModel="selectedTransaction" >
+                                    <option *ngFor='let trans of Transactions' [value]="trans">{{trans}}</option>
+                                </select>
+                            </div>
+                        </div>
+                <div class="col-md-2">
+                         
+                    <div class="form-group row">
+                        <label for="fromdate">From Date</label>
+                        <input class="form-control " placeholder="yyyy-mm-dd"
+                        name="fmrDate"  ngbDatepicker #df="ngbDatepicker" (click)="df.toggle()" >
+                 
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="todate">To Date</label>
+                        <input type="todate" class="form-control" id="todate" placeholder="yyyy-mm-dd" ngbDatepicker #dt="ngbDatepicker" (click)="dt.toggle()" >
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label for="groupdata">Group By</label>
+                        <select class="form-control" ngModel="selectedGroup" >
+                            <option *ngFor='let gby of Groups' [value]="gby">{{gby}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                        <div class="card card-block tip-card" style="margin-top:20px; ">
+         
+                                <input type="text" class="form-control" id="searchstr" placeholder="Search..."/>
+                            
+                            <button class="btn btn-success input-group-append">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="fromdate">Company Code</label>
+                        <select class="form-control" (ngModel)="selectedComanyCode"  (change)="onChangeCompany($event.target.value)" >
+                            <option *ngFor='let companyCode of CompanyCode ' [value]="companyCode" >{{companyCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="fromdate">Zone</label>
+                        <select class="form-control"  (ngModel)="selectedZoneCode"  (change)="onChangeZone($event.target.value)">
+                            <option *ngFor='let zoneCode of ZoneCodes ' [value]="zoneCode">{{zoneCode}}</option>
+                        </select>
+                      
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="fromdate">EDC</label>
+                        <select class="form-control"  (ngModel)="selectedEDCCode"  (change)="onChangeEDC($event.target.value)">
+                            <option *ngFor='let edcCode of EDCCodes ' [value]="edcCode">{{edcCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="fromdate">GDW</label>
+                        <select class="form-control"  (ngModel)="selectedGDWCode" (change)="onChangeGDW($event.target.value)">
+                            <option *ngFor='let gdwCode of GDWCodes ' [value]="gdwCode">{{gdwCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="fromdate">OU Code</label>
+                        <select class="form-control"  (ngModel)="selectedOUCode" >
+                            <option *ngFor='let ouCode of OUCodes ' [value]="ouCode">{{ouCode}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary" style="margin-top: 20px;" (click)="getSummary()">Show Details</button>       
+                </div>
+            </div>
+            <card >
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Person Code-Name
+                            </th>
+                            <th>
+                                Person Type
+                            </th>
+                            <th>
+                                Delivery PDC
+                            </th>
+                            <th>
+                                Delivery Docket
+                            </th>
+                            <th>
+                                Updated Dockets
+                            </th>
+                            <th>
+                                Completion %
+                            </th>
+                            <th>
+                                Un-Delivered
+                            </th>
+                            <th>
+                                Delivered
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr *ngFor='let docketList of DocketList' >
+                            <td>{{docketList.pcode}}-{{docketList.pname}}</td>
+                            <td>{{docketList.ptype}}</td>
+                            <td>{{docketList.dpdc}}</td>
+                            <td>{{docketList.ddocket}}</td>
+                            <td>{{docketList.dudocket}}</td>
+                            <td>{{docketList.UPD_PER}}</td>
+                            <td>{{docketList.UNDLVD_DOCKETS}}</td>
+                            <td>{{docketList.DLVD_DOCKETS}}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </card>
+    
+
+
+
+<!--Model forms POD Approval-->
+<!-- The Modal -->
+<div class="modal fade" id="podApprovalModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">POD Approval</h4>
+              <button type="button" class="close" (click)="hideModal('podApprovalModal')" >&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                        <div class="col-sm-4 animated fadeIn">
+                                <div class="card card-block tip-card">
+                                  <div class="tip-msg">
+                                    <h3>PDC</h3>
+                                    <span>{{pdcNo}}</span>
+                                  </div>
+                                   
+                                </div>
+                        </div>
+                        <div class="col-sm-4 animated fadeIn">
+                                <div class="card card-block tip-card">
+                                  <div class="tip-msg">
+                                    <h3>Docket</h3>
+                                    <span>{{docketNo}}</span>
+                                  </div>
+                                   
+                                </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                            <div class="row">
+                                    
+                                     
+                                   
+                                   
+                                    
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    
+                                    <image-cropper   
+                                       
+                                        [imageBase64]="imageChangedEvent"
+                                            [maintainAspectRatio]="true"
+                                            [aspectRatio]="4/3"
+                                            [resizeToWidth]="128"
+                                            [onlyScaleDown]=ture
+                                            format="jpg"
+                                            (imageCropped)="imageCropped($event)"
+                                            (imageLoaded)="imageLoaded()"
+                                            (cropperReady)="cropperReady()"
+                                            (loadImageFailed)="loadImageFailed()"
+                                    ></image-cropper>
+                                   
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-3">
+                                    <button (click)="rotateLeft()" class="btn btn-primary">Rotate left</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                    <button (click)="rotateRight()" class="btn btn-primary">Rotate right</button>
+                                    </div>
+                                   
+                                    <div class="col-md-2">
+                                    <button class="btn btn-primary" (click)="compressFile()">Resize</button>
+                                    </div>
+                            </div>
+                            <div class="row"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <label>Croped Image</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img [src]="croppedImage" />
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="PODApprove()" >Approve</button>
+              <button type="button" class="btn btn-danger" >Reject</button>
+              <button type="button" class="btn btn-success" (click)="hideModal()">Close</button>
+      
+              <!-- this button is hidden, used to close from typescript -->
+              <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+<!--Model forms RUNSHEET UPLOAD-->
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Runsheet Upload</h4>
+          <button type="button" class="close" (click)="hideModal('myModal')">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+                
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="fromdate">PDC No.</label>
+                       <input type="text" class="form-control" readonly>
+                </div>
+            </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fromdate">GA Code</label>
+                                    <select class="form-control" ngModel="zone_code" >
+                                        <option *ngFor='let zoneCode of ZoneCode ' value="zoneCode">{{zoneCode}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fromdate">GA Name</label>
+                                    <select class="form-control" ngModel="EDCCode" >
+                                        <option *ngFor='let edcCode of EDCCode ' value="edcCode">{{edcCode}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                   
+            <input type="file" class="form-control">
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="sendModal()" >Send</button>
+          <button type="button" class="btn btn-danger" (click)="hideModal()">Close</button>
+  
+          <!-- this button is hidden, used to close from typescript -->
+          <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Model forms SDC UPLOAD-->
+<!-- The Modal -->
+<div class="modal fade" id="sdcUpload">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">SDC Upload</h4>
+              <button type="button" class="close" (click)="hideModal('sdcUpload')">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+               <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fromdate">PDC No.</label>
+                           <input type="text" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fromdate">Docket No.</label>
+                               <input type="text" class="form-control" readonly>
+                        </div>
+                </div>
+            </div>     
+            <div class="row">
+                    <div class="col-md-4">
+                            <div class="form-group">
+                               <button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                   <button class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+            </div>
+                            
+                                
+                       
+                <input type="file" class="form-control">
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="sendModal()" >Send</button>
+              <button type="button" class="btn btn-danger" (click)="hideModal()">Close</button>
+      
+              <!-- this button is hidden, used to close from typescript -->
+              <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--Model forms BAD  UPLOAD-->
+<!-- The Modal -->
+<div class="modal fade" id="badUpload">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">BAD Upload</h4>
+              <button type="button" class="close" (click)="hideModal('badUpload')">&times;</button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+               <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fromdate">PDC No.</label>
+                           <input type="text" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="fromdate">Docket No.</label>
+                               <input type="text" class="form-control" readonly>
+                        </div>
+                </div>
+            </div>     
+            <div class="row">
+                    <div class="col-md-4">
+                            <div class="form-group">
+                               <button class="btn btn-primary"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                   <button class="btn btn-primary"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+            </div>
+                            
+                                
+                       
+                <input type="file" class="form-control">
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="sendModal()" >Send</button>
+              <button type="button" class="btn btn-danger" (click)="hideModal()">Close</button>
+      
+              <!-- this button is hidden, used to close from typescript -->
+              <button type="button" id="close-modal" data-dismiss="modal" style="display: none">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+

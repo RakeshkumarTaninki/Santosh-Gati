@@ -1,0 +1,6 @@
+{ 
+    "/ng-pi-admin-master/*":
+     { "target": "http://localhost:4200",
+         "secure": false 
+         } 
+}

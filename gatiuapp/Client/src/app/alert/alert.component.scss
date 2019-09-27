@@ -1,0 +1,57 @@
+
+::ng-deep snack-bar-container.success-snackbar, ::ng-deep snack-bar-container.error-snackbar{
+
+    max-width:360px;
+    border-radius:3px !important;
+    
+    button{
+      position: absolute;
+      left: 0px;
+      margin-left: 0px;
+      height: 100%;
+      bottom: 0px;
+      width: 50px;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius:3px;
+      background-repeat: no-repeat !important;
+      background-size: 20px !important;
+      background-position: center !important;
+      text-align: left !important;
+    }
+    
+
+    simple-snack-bar{
+        padding-left:40px !important;     
+    }
+  }
+
+
+  ::ng-deep snack-bar-container.success-snackbar{
+      span{
+        color:white;
+      }
+      
+      background-color:#309F5E;
+      button{
+        background: #309F5E;
+        color: #309F5E;
+        // background-image: url("/assets/images/tick.svg");
+        
+      }
+  } 
+  
+  ::ng-deep snack-bar-container.error-snackbar{
+    span{
+      color:white;
+    }
+
+    background-color:#C64444;
+    button{
+        background-color:#A90D0E;
+        color:#A90D0E;        
+        // background-image: url("/assets/images/cross.svg");
+        
+    }
+    
+
+  }

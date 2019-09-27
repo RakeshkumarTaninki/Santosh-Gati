@@ -1,0 +1,415 @@
+.container{
+    max-width: 1519px;
+    
+.mainsection {
+    margin-top: 7%;
+    .headingRow{
+        // margin-left: -18%;
+        margin-top: 20px;
+        row{
+            // margin-right: -54px !important;
+        }
+    .pageHeading{
+        // font-family:'RobotoBold';
+        font-size: 14px; 
+        font-weight: bold;
+        color: #706C6C;
+    }
+    .pagedate{
+        // font-family:'RobotoRegular';
+        font-size: 13px; 
+        color: #706C6C;
+        // margin-top: -22px;
+        float: right;
+        // margin-right: 2%;
+
+    }
+}
+.row-container{
+    margin-right: -121px;
+    height: 550px;
+     hr { 
+        display: block;
+        margin-bottom: 0.5em;
+        margin-left: -14px;
+        margin-right: -15px;
+       
+    }
+  
+.table-container{
+    background-color: white;
+   position: relative;
+   margin-left: 1%;
+   border-radius: 4px;
+  .white-container{
+    margin-top: 5px;
+ p{
+    margin-bottom: 1px;
+    // font-family: 'RobotoRegular';
+    font-size: 15px;
+    margin-left: 13px;
+    margin-top: 11px;
+
+ }
+
+ .searchImg{
+    float: right;
+    position: relative;
+    top: 14px;
+    right: 21px;
+    height: 14px;
+    cursor:pointer;
+ }
+
+ input{
+    // background-image : url('/assets/Images/search_icon.png');
+    // cursor: pointer;
+    // background-repeat: no-repeat;
+    // background-position: right;
+    
+        color:rgb(20, 20, 20);
+        font-size: 16px;
+        width: 57%;
+        border-radius: 4px;
+        margin-top: 8px;
+        border-style: solid;
+        border-color:#eeeef3;
+        float: right;
+        padding: 0px 24px 0px 0px;
+    }
+.search_icon{
+    width:12px;
+}
+
+    .inputfield{
+        // background-position: 97%;
+        // background-size: 14px;
+        // background-repeat: no-repeat;
+    }
+
+
+    .inputfield::-webkit-input-placeholder{
+        
+        color:#cacad4!important;
+        text-emphasis: after 1px;
+        padding-left: 10px;
+        font-size: 15px;
+        margin-left: 10px;
+        
+        
+    
+     }
+  
+    }
+ }
+
+
+
+
+.tableSection{
+    .scrollbar {
+      
+        height: 430PX;
+        width: 100%;
+        background: #fff;
+        overflow-y: scroll;
+     
+        }
+      
+        
+        .scrollbar-primary::-webkit-scrollbar {
+        width: 8px;
+        background-color: white; }
+        
+        .scrollbar-primary::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 1 0 6px rgba(0, 0, 0, 0.1);
+        
+        outline: 1px solid slategrey;
+        background-color: rgb(226, 228, 231); }
+        
+    // padding: 20px;
+   
+    // overflow-y:auto;
+    th{
+        // font-family: 'RobotoRegular';
+        font-size: 14px;  
+        color: #000000;
+        font-weight: normal;
+        text-align:center;
+    }
+
+    td{
+        text-align: center;
+    }
+
+    th:nth-child(1), td:nth-child(1){
+        text-align: left;
+    }
+
+  tbody{
+
+    // font-family:'RobotoRegular';
+    font-size: 13px;  
+    color:#828282;
+    font-weight: normal;
+    .geofence{
+        width: 20px;
+    }
+.chat-notify{
+    img{
+        cursor:pointer;
+    }
+    padding-top: 10px;
+
+    .geofence{
+        width: 20px;
+        margin-top: 2px;
+        position: static;
+    } 
+    .circle{
+        height: 15px;
+    width: 15px;
+    /* background-color: #bbb; */
+    border-radius: 48px;
+    display: inline-block;
+    background-color: #FF2670;
+    margin-left: -5px;
+    color: white;
+    padding-left: 4px;
+    font-size: 11px;
+    font-weight: normal;
+    padding-top: 1px;
+    position: relative;
+
+    }
+
+
+
+}
+
+    .themeButton{
+        background-color: #0096B1;
+        font-size: 12px;
+        border: none;
+        outline: none;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        width: 100%;
+        height: 25px;
+        margin-top: -11px;
+        padding: 4px;
+        border-radius: 3px;
+
+    }
+    
+    button:disabled {
+        background: #dddddd;
+      }
+   
+}
+}
+
+
+.spinner{
+    font-size:22px;
+    color:#4393BF;
+    margin-left:50%;
+    margin-top: 10px;
+}
+
+
+
+.status-container{
+    background-color: white;
+    margin-left: 30px;
+    border-radius: 4px;
+    height: auto;
+
+    .status-heading{
+        margin-top: 17px;
+        font-size: 13px;
+        // font-family: 'RobotoRegular';
+        margin-left: 2px;
+        
+    }
+    .status-bar{
+    margin-top: 5px;
+    margin-left: 40px;
+    align-self: center;
+    }
+    .list{
+        font-size: 11px;
+        list-style-type:none;
+        color: #AA9A9A;
+        margin-left: -20px;
+        // font-family:'RobotoRegular';
+    }
+}
+
+.map-container{
+    background-color: #F5F6FA;
+    height: 295px;
+    margin-left: 19px;
+    margin-top: 9px;
+    border-radius: 6px;
+    margin-right: -13px;
+
+
+ 
+agm-map {
+    height: 295px;
+    
+  }
+}
+}
+  }
+  /* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+  
+  /* The popup chat - hidden by default */
+  .chat-popup {
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width textarea */
+  .form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
+  }
+  
+  /* When the textarea gets focus, do something */
+  .form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/send button */
+  .form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+
+  button.disable{
+    background-color:#dd0000;
+  }
+
+  .gaListTable{
+      th{
+        position: sticky;
+        background: white;
+        top: 0;
+        z-index: 1; 
+    }
+
+  } 
+
+
+  /*CHAT CSS*/
+  ::ng-deep {
+      #ng-chat-people{
+          margin-right: 7px !important;
+    
+          .ng-chat-title{
+            text-align:center !important;
+            background-color:#1896b1 !important;            
+            color:white;
+        }
+    
+      }
+
+      .ng-chat-window{
+          .ng-chat-title{
+              background-color:#1896b1 !important;
+              height: 40px !important;
+              color:white !important;
+
+              strong{
+                  padding:5px 3px;
+              }
+          }
+
+          .ng-chat-unread-messages-count{
+              display: none !important;
+          }
+
+          .ng-chat-user-status{
+              display: none !important;
+          }
+
+          .ng-chat-close{
+              color: white !important;
+              padding: 5px 3px;
+          }
+
+          .received-chat-message-container{
+              border:none !important;
+              background-color:#1896b1 !important;
+              color:white !important;
+            }
+            
+            .sent-chat-message-container, .received-chat-message-container{                
+                border-radius: 12px !important;
+                text-align:center !important;
+                width:auto !important;
+                min-width:75px !important;
+                padding:7px 10px;
+            }
+
+            .sent-chat-message-time{
+                text-align:right;   
+            }
+
+            .received-chat-message-time{
+                text-align:left;   
+            }
+
+      } /*chatwindow*/ 
+
+  }
+
+}

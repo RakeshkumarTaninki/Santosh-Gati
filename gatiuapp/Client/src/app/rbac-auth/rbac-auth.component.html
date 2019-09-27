@@ -1,0 +1,33 @@
+<div class="container">
+
+  <h2 class="pageTitle">
+          <span class="logo">
+              <img src="/assets/Images/gati-logo-16x11.png" alt="">
+          </span>
+      Admin Authentication
+  </h2>
+  
+  <form action="" id="gatiForm">
+
+      <div class="authForm">
+          <div class="row">
+              <label for="">Enter User Data</label>
+          </div> 
+          
+          <div class="row" >
+              <textarea 
+              (keyup)="onUserDataKeyUp($event)"
+              required name="userData" id="userData" cols="30" rows="13" id="userData" name="userData" class="userDataInp"></textarea>
+          </div>
+          
+          <div class="row">
+              <button 
+              id="rbacSubmit"
+              [disabled]="loading || !formValid"
+              (click)="authenticate()"  class="authBtn">Authenticate</button>
+          </div>
+      </div>
+
+  </form>
+      
+</div>

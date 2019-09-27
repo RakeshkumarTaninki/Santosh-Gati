@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body{
+    background-color:#F5F6FA;
+    overflow-x: hidden;  
+    font-family:"Roboto"; 
+}
+
+.status-bar{
+    circle-progress{
+      
+        tspan{
+            font-weight: bold;
+        }
+    }
+}
+
+.status-circle-1 , .status-circle-2{
+    circle-progress{
+      
+        tspan{
+            font-weight: bold;
+        }
+    }
+}  .shadow {
+   
+    box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+
+
+  .status-circle-2{
+    circle-progress{
+        svg{
+            text{
+                tspan{
+                    &:nth-child(2) {
+                        font-size: 14px !important;
+                    }
+
+                    // &:nth-child(3) {
+                    //     font-size: 34px !important;
+                    // }
+                }
+             
+            }
+        }
+      
+       
+    }}

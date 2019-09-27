@@ -1,0 +1,45 @@
+<div class="col-lg-12 whiteSection shadow"  *ngIf="authenticated">
+  <div class="row">
+      <div class="col-lg-2 mainHeading g">
+       
+        <img class="gati-logo" src="..\..\assets\Images\gati-logo-16x11/gati-logo-16x11.png">
+       
+      </div>
+      <div class="col-lg-1 vl"></div>
+      <div  class="col-lg-9" >
+
+          <nav class="navbar navbar-expand-sm links-bar ">
+              <div class="container-fluid">
+                <ul class="nav navbar-nav" style="float:right;">
+                  <li class="horizontal" >
+                    <a href="#" class="dashboard" [routerLink]="['/gati','dashboard']">Dashboard</a>
+                    <hr *ngIf="underlineDashboard">
+                  </li> &nbsp;&nbsp;
+                  
+                  <li>
+                    <a [routerLink]="['/gati','messageBroadcast']" *ngIf="accessArr?.indexOf('broadcast')>-1">
+                      <button class="themeButton">
+                        <img class="gati-brdcast" src="..\..\assets\Images\Path 635.svg">
+                        Message Broadcast 
+                      </button>
+                    </a>
+                    
+                  </li>
+
+              <li> <div class="vl2"></div></li>&nbsp;&nbsp;
+                  
+              <li class="notify">
+                    <!--Not displaying bell icon temporarily. will display when required-->
+                    <img *ngIf="false" class="bell" src="..\..\assets\Images\Shape.svg">
+                  </li>
+
+                  <li></li>&nbsp;&nbsp;  
+                  
+                  <li class="adminName">{{loggedInUsername | lowercase}}</li>&nbsp;&nbsp;
+                </ul>
+              </div>
+            </nav>
+        </div>
+         
+      </div>
+  </div>

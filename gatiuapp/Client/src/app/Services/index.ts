@@ -1,0 +1,1 @@
+export {gaListService} from '../Services/gaListService';
